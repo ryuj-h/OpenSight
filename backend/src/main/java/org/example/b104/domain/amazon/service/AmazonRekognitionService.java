@@ -15,6 +15,12 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.List;
 
+
+/**
+ * Amazon Rekognition 서비스를 사용하기 위한 클래스
+ *
+ * @Author : 류진호
+ */
 @Service
 public class AmazonRekognitionService {
 
@@ -31,6 +37,13 @@ public class AmazonRekognitionService {
                 .build();
     }
 
+    /**
+     * 컬렉션을 추가하는 함수
+     * 컬렉션 : 얼굴을 저장하는 공간
+     *
+     * @param collectionName
+     * @Author : 류진호
+     */
     public String createCollection(String collectionName) {
         CreateCollectionRequest request = CreateCollectionRequest.builder()
                 .collectionId(collectionName)
@@ -39,6 +52,15 @@ public class AmazonRekognitionService {
         CreateCollectionResponse response = rekognitionClient.createCollection(request);
         return response.collectionArn();
     }
+
+    /**
+     * 얼굴을 검출하는 함수
+     * 이미지 속에 얼굴이 있는지, 얼굴이 몇개인지 등을 검출함. S3에서 이미지를 가져오는 것이 아님!!
+     * 디렉토리 경로에서 이미지를 가져옴
+     *
+     * @param imagePath
+     * @Author : 류진호
+     */
     public void detectFaces(String imagePath) {
         try {
             File imageFile = new File(imagePath);
@@ -62,14 +84,22 @@ public class AmazonRekognitionService {
         }
     }
 
-    public String registerUser(String imageS3Bucket, String imageS3Key) {
+
+    /**
+     * 컬렉션에 S3에 저장된 이미지를 통해 얼굴을 등록하는 함수
+     *
+     * @param imageS3Bucket S3 버킷 이름 현재 서버에서 쓰는 이름은 "cloud-open-sight-ue1"
+     * @param imageS3Key S3 버킷에 저장된 이미지 이름 (ex: mypic.png)
+     * @return
+     * @Author : 류진호
+     */
+    public String registeruser(String imageS3Bucket, String imageS3Key) {
         Image image = Image.builder()
                 .s3Object(S3Object.builder()
                         .bucket(imageS3Bucket)
                         .name(imageS3Key)
                         .build())
                 .build();
-//cloud-open-sight-collection
         IndexFacesRequest request = IndexFacesRequest.builder()
                 .collectionId("cloud-open-sight-collection")//collectionId)
                 .image(image)
@@ -82,6 +112,17 @@ public class AmazonRekognitionService {
 
     //
     //arn:aws:s3:::cloud-open-sight/mypic.png
+
+    /**
+     * S3에 업로드 된 이미지를 통해 컬렉션에 가입된 유저와 비교하는 함수
+     * S3에 이미지를 업로드 한 후 사용해야함
+     *
+     * @param collectionId 사용되는 컬렉션 ID (ex: cloud-open-sight-collection)
+     * @param imageS3Bucket S3 버킷 이름 (ex: cloud-open-sight-ue1)
+     * @param imageS3Key 비교되는 이미지
+     * @return
+     * @Author : 류진호
+     */
     public List<FaceMatch> recognizeFace(String collectionId, String imageS3Bucket, String imageS3Key) {
         Image image = Image.builder()
                 .s3Object(S3Object.builder()
