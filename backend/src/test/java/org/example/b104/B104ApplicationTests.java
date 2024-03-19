@@ -144,7 +144,7 @@ class B104ApplicationTests {
 //        InquireAccountListResponse inquireAccountListResponse2 = accountService.inquireAccountList("***REMOVED***", "9d4b8b95-6fbc-421e-aca8-35748bb4b12b");
 //        System.out.println(inquireAccountListResponse2);
 
-//        InquireAccountTransactionResponse inquireAccountTransactionResponse = accountService.inquireAccountTransaction("***REMOVED***",
+//        InquireAccountTransactionHistoryResponse inquireAccountTransactionResponse = accountService.inquireAccountTransaction("***REMOVED***",
 //                "001",
 //                "0011964510743365",
 //                "20240318",
@@ -158,5 +158,12 @@ class B104ApplicationTests {
 //        for(SingleAccountTransactionHistory singleAccountTransactionHistory : test){
 //            System.out.println(singleAccountTransactionHistory.toString());
 //        }
+
+        InquireTransactionHistoryDetailResponse inquireTransactionHistoryDetailResponse = accountService.inquireTransactionHistoryDetail("***REMOVED***",
+                "001",
+                "0011964510743365",
+                254,
+                "9d4b8b95-6fbc-421e-aca8-35748bb4b12b");
+        System.out.println(inquireTransactionHistoryDetailResponse);
     }
 }
