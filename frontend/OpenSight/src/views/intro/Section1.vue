@@ -1,4 +1,5 @@
 <script setup>
+import router from '@/router';
 
 </script>
 
