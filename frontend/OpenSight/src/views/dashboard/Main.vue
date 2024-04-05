@@ -305,6 +305,7 @@ const name = sessionStorage.getItem('username')
   height: 65px;
 }
 
+
 @media only screen and (min-width: 393px) {
   .container {
     /* display: flex; */
