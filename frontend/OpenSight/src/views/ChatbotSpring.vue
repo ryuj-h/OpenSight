@@ -220,7 +220,7 @@ watch(()=> store.getSpringResponse, async (command) => {
 .container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 80vh;
   background-color: #ffffff;
 }
 
