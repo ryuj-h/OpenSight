@@ -186,7 +186,7 @@ const openAccount = () => {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  bottom: 150px;
+  bottom: 100px;
 }
 
 .button-cancel {
