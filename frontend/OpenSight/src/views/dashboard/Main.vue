@@ -304,7 +304,7 @@ const name = sessionStorage.getItem('username')
   height: 65px;
 }
 
-@mediaonlyscreenand(min-device-width:393px)and(max-device-height:892px)and(orientation:portrait)and(-webkit-device-pixel-ratio:3){
+@media only screen and (min-width: 393px) {
   .container {
     /* display: flex; */
     align-items: flex-start;
