@@ -241,6 +241,7 @@ watch(() => store.getSpring, (newMessage) => {
   flex-direction: column;
   height: 100vh;
   background-color: #ffffff;
+  bottom: 150px;
 }
 
 .header {
