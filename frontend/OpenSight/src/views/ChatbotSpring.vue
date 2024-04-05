@@ -5,6 +5,7 @@ import { useChatBotStore2 } from '@/stores/chatbot2'
 import { cameraActivate } from '@/stores/chatbot'
 import axios from 'axios'
 
+import { useAccountStore } from '@/stores/account'
 import FaceRecognition from "@/components/modal/FaceRecognition.vue";
 import ChatMessage from '@/components/ChatMessage.vue'
 
