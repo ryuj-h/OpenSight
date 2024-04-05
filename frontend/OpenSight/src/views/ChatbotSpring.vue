@@ -4,7 +4,6 @@ import { useRouter } from "vue-router";
 import { useChatBotStore2 } from '@/stores/chatbot2'
 import { cameraActivate } from '@/stores/chatbot'
 import axios from 'axios'
-
 import { useAccountStore } from '@/stores/account'
 import FaceRecognition from "@/components/modal/FaceRecognition.vue";
 import ChatMessage from '@/components/ChatMessage.vue'
@@ -21,13 +20,10 @@ const messages = ref([
     isChatbot: 1 },
 ])
 
-
 const isNextCommandTrasnferInfoRequest = ref(0);
-
 const receiverBankCode = ref("");
 const receiverAccountNo = ref("");
 const transferBalance = ref("");
-
 const messageToSend = ref("");
 
 const accountStore = useAccountStore();
@@ -282,7 +278,7 @@ const captureImage = () => {
     <p class="title1" @click="router.push('/main')">&lt;</p><p class="title1">챗봇</p>
   </div>
 
-  <div class="modal">
+  <div class="modal" v-if="cameraActivate">
     <video ref="videoRef" autoplay style="display:none;"></video>
     <canvas ref="canvasRef" style="display:none;"></canvas>
     <div @click="captureImageFilter">
