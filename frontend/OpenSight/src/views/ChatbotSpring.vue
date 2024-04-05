@@ -3,6 +3,7 @@ import { ref, watch } from "vue"
 import { useRouter } from "vue-router";
 import { useChatBotStore2 } from '@/stores/chatbot2'
 import { cameraActivate } from '@/stores/chatbot'
+import axios from 'axios'
 
 import FaceRecognition from "@/components/modal/FaceRecognition.vue";
 import ChatMessage from '@/components/ChatMessage.vue'
@@ -27,6 +28,12 @@ const receiverAccountNo = ref("");
 const transferBalance = ref("");
 
 const messageToSend = ref("");
+
+const accountStore = useAccountStore();
+
+const videoRef = ref(null);
+const isCameraReady = ref(false);
+const canvasRef = ref(null);
 
 async function sendVoiceToCommand() {
   alert("10초 동안 음성 인식 기능이 활성화됩니다. 원하시는 업무를 말씀해주세요. 음성은 10초 후 자동으로 종료됩니다.");
@@ -179,17 +186,6 @@ watch(()=> store.getSpringResponse, async (command) => {
       break;
   }
 });
-
-import { ref } from "vue"
-import { useAccountStore }  from "@/stores/account.js";
-import { cameraActivate } from '@/stores/chatbot'
-import axios from 'axios'
-
-const accountStore = useAccountStore();
-
-const videoRef = ref(null);
-const isCameraReady = ref(false);
-const canvasRef = ref(null);
 
 const captureImageFilter = () =>{
   if (isCameraReady.value === false){
