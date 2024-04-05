@@ -456,7 +456,8 @@ const name = sessionStorage.getItem('username')
   .chat-bot {
     position: fixed;
     right: 40px;  /* 또는 원하는 간격으로 조정 */
-    top: 580px; /* 또는 원하는 간격으로 조정 */
+    bottom: 100px;
+    //top: 580px; /* 또는 원하는 간격으로 조정 */
     width: 75px;  /* 아이콘의 크기에 맞게 조정 */
     height: 75px; /* 아이콘의 크기에 맞게 조정 */
     z-index: 1000; /* 다른 요소들 위에 떠 있게 하려면 충분히 큰 값 */
