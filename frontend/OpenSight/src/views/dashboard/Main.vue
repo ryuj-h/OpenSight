@@ -17,7 +17,7 @@ const checkNull = ref(false);
 
 const userAgent = ref(navigator.userAgent); // 브라우저의 User-Agent 문자열
 
-alert(userAgent.value);
+//alert(userAgent.value);
 
 // 선택된 계정의 잔액을 조회하는 함수
 async function fetchAccountBalance(index) {
@@ -167,10 +167,10 @@ const name = sessionStorage.getItem('username')
   margin: 0 auto;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  position: fixed; /* 화면에 고정 */
+  //position: fixed; /* 화면에 고정 */
   top: 80px; /* 상단으로부터 130px 떨어진 위치에 배치 */
   left: 50%; /* 가운데 정렬을 위해 */
-  transform: translateX(-50%); /* 가운데 정렬을 위해 */
+  //transform: translateX(-50%); /* 가운데 정렬을 위해 */
   height: calc(100vh - 50px); /* 상단부터 130px 위치부터 하단까지의 높이 설정 */
   /* overflow: scroll;  */
   /* 나머지 스타일은 기존에 설정한 대로 유지 */
