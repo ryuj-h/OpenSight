@@ -179,6 +179,104 @@ watch(()=> store.getSpringResponse, async (command) => {
       break;
   }
 });
+
+import { ref } from "vue"
+import { useAccountStore }  from "@/stores/account.js";
+import { cameraActivate } from '@/stores/chatbot'
+import axios from 'axios'
+
+const accountStore = useAccountStore();
+
+const videoRef = ref(null);
+const isCameraReady = ref(false);
+const canvasRef = ref(null);
+
+const captureImageFilter = () =>{
+  if (isCameraReady.value === false){
+    setupCamera();
+    alert("카메라 준비 완료 다시 버튼을 눌러주세요");
+    isCameraReady.value = true;
+    return;
+  }
+  else{
+    captureImage();
+    alert("사진 캡쳐 완료");
+
+    const now = new Date();
+    const dateTimeStr = now.toISOString().replace(/[^0-9]/g, '').slice(0, 14);
+    const uniqueFilename = `capturedImage_${dateTimeStr}.jpg`;
+
+    const accessToken = sessionStorage.getItem('accessToken');
+
+    canvasRef.value.toBlob(async (blob) => {
+      const formData = new FormData();
+      formData.append('requestImage', blob, uniqueFilename);
+
+      try {
+        const response = await axios.post(
+            `${import.meta.env.VITE_REST_API}/users/face-auth`,
+            formData,
+            {
+              headers: {
+                'Content-Type': 'multipart/form-data', // Content-Type을 올바르게 설정해야 합니다.
+                'Authorization': `${accessToken}`
+              }
+            }
+        );
+        console.log(response.data);
+        if (response.data.data.result === "success") {
+          alert("얼굴인식 성공");
+
+          await accountStore.inquireAccountList();
+
+          console.log(accountStore.myAccountList[0].bankCode);
+          console.log(accountStore.myAccountList[0].accountNo);
+          console.log ("balance : " , transferBalance.value);
+          console.log ("receiverBankCode : " , receiverBankCode.value);
+          console.log ("receiverAccountNo : " , receiverAccountNo.value);
+
+
+          accountStore.selectedBank = receiverBankCode.value;
+          accountStore.accountNumber = receiverAccountNo.value;
+          accountStore.amount = transferBalance.value;
+          accountStore.selectedMyAccountBankCode = accountStore.myAccountList[0].bankCode;
+          accountStore.selectMyAccountNumber = accountStore.myAccountList[0].accountNo;
+          accountStore.accountTransfer();
+          messages.value.push(
+              {
+                message : "입금 완료.",
+                isChatbot : 1
+              }
+          )
+          cameraActivate.value = false;
+
+        } else {
+          alert("얼굴인식 실패");
+          cameraActivate.value = false;
+        }
+      }
+      catch (error) {
+        console.error(error);
+      }
+    }, 'image/jpeg');
+  }
+}
+
+const setupCamera = async () => {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    videoRef.value.srcObject = stream;
+    console.error("Setup camera successful");
+  } catch (error) {
+    console.error("Error accessing the camera", error);
+  }
+};
+
+const captureImage = () => {
+  canvasRef.value.width = videoRef.value.videoWidth;
+  canvasRef.value.height = videoRef.value.videoHeight;
+  canvasRef.value.getContext('2d').drawImage(videoRef.value, 0, 0);
+};
 </script>
 
 <template>
@@ -187,7 +285,13 @@ watch(()=> store.getSpringResponse, async (command) => {
     <p class="title1" @click="router.push('/main')">&lt;</p><p class="title1">챗봇</p>
   </div>
 
-  <FaceRecognition v-if="cameraActivate" />
+  <div class="modal">
+    <video ref="videoRef" autoplay style="display:none;"></video>
+    <canvas ref="canvasRef" style="display:none;"></canvas>
+    <div @click="captureImageFilter">
+      <img class="faceid" src="../../assets/img/faceid.png" alt="얼굴 인식 버튼">
+    </div>
+  </div>
 
   <div class="content">
     <div class="chat-container">
@@ -203,12 +307,12 @@ watch(()=> store.getSpringResponse, async (command) => {
 
       <div v-if="textMessage">
         <div class="button" @click="sendButtonClick()">
-          <img class="speech" src="../assets/img/send.png" alt="입력한 글자를 챗봇에게 보내는 버튼"> 
+          <img class="speech" src="../assets/img/send.png" alt="입력한 글자를 챗봇에게 보내는 버튼">
         </div>
       </div>
       <div v-else>
         <div class="button" @click="sendVoiceToCommand">
-          <img class="speech" src="../assets/img/waves.png" alt="음성으로 말하기 위한 시작 버튼"> 
+          <img class="speech" src="../assets/img/waves.png" alt="음성으로 말하기 위한 시작 버튼">
         </div>
       </div>
     </div>
@@ -220,7 +324,7 @@ watch(()=> store.getSpringResponse, async (command) => {
 .container {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 100vh;
   background-color: #ffffff;
 }
 
@@ -288,4 +392,19 @@ watch(()=> store.getSpringResponse, async (command) => {
   border: 1px solid #cbcbcb;
 }
 
+.modal {
+  background-color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99;
+}
+
+.faceid {
+  width: 100px;
+  height: 100px;
+}
 </style>
