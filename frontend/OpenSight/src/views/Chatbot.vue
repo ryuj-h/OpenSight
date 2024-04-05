@@ -266,7 +266,7 @@ watch(() => store.getSpring, (newMessage) => {
   display: flex;
   flex-direction: column;
   justify-content: flex-end; /* 이를 통해 chat-container가 아래쪽으로 정렬됩니다 */
-  height: 100%; /* 콘텐츠 영역이 화면 전체 높이를 차지하도록 설정합니다 */
+  height: 80%; /* 콘텐츠 영역이 화면 전체 높이를 차지하도록 설정합니다 */
   background-color: #ffffff;
 }
 
@@ -299,7 +299,7 @@ watch(() => store.getSpring, (newMessage) => {
 
 .input-text {
   position: relative; /* 입력란을 화면 하단에 고정합니다 */
-  bottom: 100px; /* 하단에서부터의 위치를 0으로 설정하여 바닥에 붙습니다 */
+  bottom: 0px; /* 하단에서부터의 위치를 0으로 설정하여 바닥에 붙습니다 */
   left: 0; /* 왼쪽에서부터의 위치를 0으로 설정하여 왼쪽에 붙습니다 */
   width: 100%; /* 입력란의 너비를 화면 전체로 설정합니다 */
   display: flex;
