@@ -166,7 +166,11 @@ const openAccount = () => {
 .container {
   background-color: #ffffff;
 }
-
+@media only screen and (min-width: 393px) {
+  .container {
+    height: 90vh;
+  }
+}
 .header {
   display: flex;
   flex-direction: column;

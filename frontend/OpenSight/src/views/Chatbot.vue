@@ -244,6 +244,15 @@ watch(() => store.getSpring, (newMessage) => {
   bottom: 150px;
 }
 
+
+@media only screen and (min-width: 393px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    background-color: #ffffff;
+  }
+}
 .header {
   display: flex;
   flex-direction: row;
