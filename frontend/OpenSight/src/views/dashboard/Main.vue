@@ -309,7 +309,7 @@ const name = sessionStorage.getItem('username')
     /* display: flex; */
     align-items: flex-start;
     justify-content: center;
-    overflow: auto;
+    //overflow: auto;
     top: 0;
     left: 0;
     //position: fixed;
