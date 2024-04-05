@@ -14,6 +14,11 @@ const currentIndex = ref(0);
 
 const myAccountBalance = ref([]);
 const checkNull = ref(false);
+
+const userAgent = ref(navigator.userAgent); // 브라우저의 User-Agent 문자열
+
+alert(userAgent.value);
+
 // 선택된 계정의 잔액을 조회하는 함수
 async function fetchAccountBalance(index) {
   try {
