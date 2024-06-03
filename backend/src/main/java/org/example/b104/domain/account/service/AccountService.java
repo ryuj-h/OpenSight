@@ -22,7 +22,7 @@ public class AccountService {
     private HttpClient httpClient;
     private ObjectMapper objectMapper;
 
-    private final String apiKey = "***REMOVED***";
+    private final String apiKey = "010218e760dd476db9bac3b474847947";
 
 
     AccountService() {

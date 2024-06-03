@@ -1,7 +1,7 @@
 # version: '2.25'
 services:
   app:
-    image: username/backend:latest # Replace with your actual Spring Boot Docker image tag
+    image:  # Replace with your actual Spring Boot Docker image tag
     ports:
       - "8080:8080"
     container_name: backend
@@ -9,8 +9,8 @@ services:
       - mysql
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/bank?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: SSAFY
+      SPRING_DATASOURCE_USERNAME: 
+      SPRING_DATASOURCE_PASSWORD: 
       TZ: Asia/Seoul
       # Add other environment variables here ss
     networks:
@@ -19,7 +19,7 @@ services:
   mysql:
     image: mysql:8.0.30 # Replace with your actual MySQL Docker image tag
     environment:
-      MYSQL_ROOT_PASSWORD: SSAFY
+      MYSQL_ROOT_PASSWORD: 
       MYSQL_DATABASE: bank
       TZ: Asia/Seoul
     ports:
@@ -32,7 +32,7 @@ services:
       - docker-network
 
   frontend:
-    image: username/frontend:latest # Replace with your actual frontend Docker image tag
+    image:  # Replace with your actual frontend Docker image tag
     ports:
       - "8081:80"
     networks:

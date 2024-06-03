@@ -69,41 +69,41 @@ class B104ApplicationTests {
         //String res = chatGptService.chat("[계좌이체 열어줘.] 괄호안에 있는 내용이 계좌이체면 1, 계좌조회면 2, 이체내역조회면 3, 이체한도조회면 4, 이체한도변경면 5 반환해줘. 다른거 입력하지 말고 숫자만");
         //System.out.println("######## res : " + res);
 
-//        RegisterAccountMemberResponse registerAccountMemberResponse = accountService.registerAccountMember("***REMOVED***",
+//        RegisterAccountMemberResponse registerAccountMemberResponse = accountService.registerAccountMember("010218e760dd476db9bac3b474847947",
 //                "JinhoRyu.Dev6@gmail.com");
 //        System.out.println("######## registerAccountMemberResponse : " + registerAccountMemberResponse);
 
 //
-//        SearchAccountMemberResponse searchAccountMemberResponse = accountService.searchAccountMember("***REMOVED***",
+//        SearchAccountMemberResponse searchAccountMemberResponse = accountService.searchAccountMember("010218e760dd476db9bac3b474847947",
 //                "JinhoRyu.Dev@gmail.com");
 //        System.out.println("######## searchAccountMemberResponse : " + searchAccountMemberResponse);
 
-        //InquireBankAccountTypesResponse inquireBankAccountTypesResponse = accountService.inquireBankAccountTypes("***REMOVED***");
+        //InquireBankAccountTypesResponse inquireBankAccountTypesResponse = accountService.inquireBankAccountTypes("010218e760dd476db9bac3b474847947");
         //System.out.println(inquireBankAccountTypesResponse);
 
         //내정보
         //SearchAccountMemberResponse(result=succeed, userId=JinhoRyu.Dev@gmail.com, userName=JinhoRyu.Dev, institutionCode=00100, userKey=9d4b8b95-6fbc-421e-aca8-35748bb4b12b, created=2024-03-17T20:58:10.155517+09:00, modified=2024-03-17T20:58:10.155514+09:00, now=2024-03-18T17:03:55.256289+09:00)
 
-//        OpenAccountResponse openAccountResponse = accountService.openAccount("***REMOVED***", "001-1-81fe2deafd1943", "9d4b8b95-6fbc-421e-aca8-35748bb4b12b");
+//        OpenAccountResponse openAccountResponse = accountService.openAccount("010218e760dd476db9bac3b474847947", "001-1-81fe2deafd1943", "9d4b8b95-6fbc-421e-aca8-35748bb4b12b");
 //        System.out.println(openAccountResponse);
 
 
 
         /*
-        OpenAccountResponse(result=success, Header=AccountResponseHeader(responseCode=H0000, responseMessage=정상처리 되었습니다., apiName=openAccount, transmissionDate=20240318, transmissionTime=170835, institutionCode=00100, apiKey=***REMOVED***, apiServiceCode=openAccount, institutionTransactionUniqueNo=20240318170835507602), bankCode=001, accountNo=0011964510743365)
+        OpenAccountResponse(result=success, Header=AccountResponseHeader(responseCode=H0000, responseMessage=정상처리 되었습니다., apiName=openAccount, transmissionDate=20240318, transmissionTime=170835, institutionCode=00100, apiKey=010218e760dd476db9bac3b474847947, apiServiceCode=openAccount, institutionTransactionUniqueNo=20240318170835507602), bankCode=001, accountNo=0011964510743365)
          */
 
-//        InquireAccountListResponse inquireAccountListResponse = accountService.inquireAccountList("***REMOVED***", "9d4b8b95-6fbc-421e-aca8-35748bb4b12b");
+//        InquireAccountListResponse inquireAccountListResponse = accountService.inquireAccountList("010218e760dd476db9bac3b474847947", "9d4b8b95-6fbc-421e-aca8-35748bb4b12b");
 //        System.out.println(inquireAccountListResponse);
 //
-//        InquireAccountInfoResponse inquireAccountInfoResponse = accountService.inquireAccountInfo("***REMOVED***", "001","0011964510743365", "9d4b8b95-6fbc-421e-aca8-35748bb4b12b");
+//        InquireAccountInfoResponse inquireAccountInfoResponse = accountService.inquireAccountInfo("010218e760dd476db9bac3b474847947", "001","0011964510743365", "9d4b8b95-6fbc-421e-aca8-35748bb4b12b");
 //        System.out.println(inquireAccountInfoResponse);
 //
-//        InquireAccountBalanceResponse inquireAccountBalanceResponse = accountService.inquireAccountBalance("***REMOVED***", "001","0011964510743365", "9d4b8b95-6fbc-421e-aca8-35748bb4b12b");
+//        InquireAccountBalanceResponse inquireAccountBalanceResponse = accountService.inquireAccountBalance("010218e760dd476db9bac3b474847947", "001","0011964510743365", "9d4b8b95-6fbc-421e-aca8-35748bb4b12b");
 //        System.out.println(inquireAccountBalanceResponse);
 
 //        ReceivedTransferAccountNumberResponse receivedTransferAccountNumberResponse = accountService.receivedTransferAccountNumber(
-//                "***REMOVED***",
+//                "010218e760dd476db9bac3b474847947",
 //                "001",
 //                "0011964510743365",
 //                1000000,
@@ -112,7 +112,7 @@ class B104ApplicationTests {
 //        System.out.println(receivedTransferAccountNumberResponse);
 
 
-//        DrawingTransferResponse drawingTransferResponse = accountService.drawingTransfer("***REMOVED***",
+//        DrawingTransferResponse drawingTransferResponse = accountService.drawingTransfer("010218e760dd476db9bac3b474847947",
 //                "001",
 //                "0011964510743365",
 //                500000,
@@ -121,14 +121,14 @@ class B104ApplicationTests {
 //        System.out.println(drawingTransferResponse);
 
 
-//        InquireAccountBalanceResponse inquireAccountBalanceResponse = accountService.inquireAccountBalance("***REMOVED***", "001","0011964510743365", "9d4b8b95-6fbc-421e-aca8-35748bb4b12b");
+//        InquireAccountBalanceResponse inquireAccountBalanceResponse = accountService.inquireAccountBalance("010218e760dd476db9bac3b474847947", "001","0011964510743365", "9d4b8b95-6fbc-421e-aca8-35748bb4b12b");
 //        System.out.println(inquireAccountBalanceResponse);
 
 //        System.out.println("###입금전###");
-//        InquireAccountListResponse inquireAccountListResponse = accountService.inquireAccountList("***REMOVED***", "9d4b8b95-6fbc-421e-aca8-35748bb4b12b");
+//        InquireAccountListResponse inquireAccountListResponse = accountService.inquireAccountList("010218e760dd476db9bac3b474847947", "9d4b8b95-6fbc-421e-aca8-35748bb4b12b");
 //        System.out.println(inquireAccountListResponse);
 //
-//        AccountTransferResponse accountTransferResponse = accountService.accountTransfer("***REMOVED***",
+//        AccountTransferResponse accountTransferResponse = accountService.accountTransfer("010218e760dd476db9bac3b474847947",
 //                "001",
 //                "0014009953511262",
 //                600000,
@@ -142,10 +142,10 @@ class B104ApplicationTests {
 //
 //
 //        System.out.println("###입금후###");
-//        InquireAccountListResponse inquireAccountListResponse2 = accountService.inquireAccountList("***REMOVED***", "9d4b8b95-6fbc-421e-aca8-35748bb4b12b");
+//        InquireAccountListResponse inquireAccountListResponse2 = accountService.inquireAccountList("010218e760dd476db9bac3b474847947", "9d4b8b95-6fbc-421e-aca8-35748bb4b12b");
 //        System.out.println(inquireAccountListResponse2);
 
-//        InquireAccountTransactionHistoryResponse inquireAccountTransactionResponse = accountService.inquireAccountTransaction("***REMOVED***",
+//        InquireAccountTransactionHistoryResponse inquireAccountTransactionResponse = accountService.inquireAccountTransaction("010218e760dd476db9bac3b474847947",
 //                "001",
 //                "0011964510743365",
 //                "20240318",
@@ -160,7 +160,7 @@ class B104ApplicationTests {
 //            System.out.println(singleAccountTransactionHistory.toString());
 //        }
 
-//        InquireTransactionHistoryDetailResponse inquireTransactionHistoryDetailResponse = accountService.inquireTransactionHistoryDetail("***REMOVED***",
+//        InquireTransactionHistoryDetailResponse inquireTransactionHistoryDetailResponse = accountService.inquireTransactionHistoryDetail("010218e760dd476db9bac3b474847947",
 //                "001",
 //                "0011964510743365",
 //                254,
